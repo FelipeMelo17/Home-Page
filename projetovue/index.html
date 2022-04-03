@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrius.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/vue/2.6.6/vue.min.js"></script>
+    https://github.com/neocotic/qrious
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+
+    <title>QRCode Bacana</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ Gerador de QRCode }}</h1>
+        </div>
+            <input type="text" size="30" placeholder="Digie aqui o seu texto" :value="texto" @input="onData">
+        </div>
+        <div v-if="texto" class="output">
+            <img : src="newQRCode">
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: 'QRCode Bacana',
+                texto: 'http://ead.unis.edu.br',
+                qr: new QRious({ size: 300 })
+            },
+            computed: {
+                newQRCode() {
+                    this.qr.valeu = this.texto
+                    return this.qr.toDataURL()
+                }
+            },
+            methods: {
+                onData(event) {
+                    this.texto = event.target.value
+                }
+            }
+        })    
+    </script>
+
+    <body>
+
+</html>
